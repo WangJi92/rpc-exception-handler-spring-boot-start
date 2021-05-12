@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
  * @author 汪小哥
  * @date 11-05-2021
  */
-@Activate(group = CommonConstants.PROVIDER)
+@Activate(group = CommonConstants.PROVIDER, order = 99999)
 public class DubboExceptionFilter3 implements Filter, Filter.Listener {
 
     private Logger logger = LoggerFactory.getLogger(ExceptionFilter.class);

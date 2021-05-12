@@ -1,8 +1,10 @@
 package com.github.wangji92.dubbo;
 
+import com.github.wangji92.dubbo.utils.ProviderInvokerTargetUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.rpc.Invocation;
 import org.apache.dubbo.rpc.Invoker;
+import org.springframework.aop.framework.AopProxyUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
@@ -29,34 +31,51 @@ public class DubboExceptionHandlerExceptionResolver implements DubboHandlerExcep
      */
     private final Map<DubboAdviceBean, ExceptionHandlerMethodResolver> exceptionHandlerAdviceCache = new LinkedHashMap<>();
 
-
+    /**
+     * 缓存类信息
+     */
     private final Map<Class<?>, ExceptionHandlerMethodResolver> exceptionHandlerCache =
             new ConcurrentHashMap<>(64);
 
     @Override
-    public Object resolveException(Method method, Invoker<?> invoker, Invocation invocation, Exception ex) {
-
-        for (Map.Entry<DubboAdviceBean, ExceptionHandlerMethodResolver> entry : this.exceptionHandlerAdviceCache.entrySet()) {
-            DubboAdviceBean advice = entry.getKey();
-            if (advice.isApplicableToBeanType(method.getClass())) {
-                ExceptionHandlerMethodResolver resolver = entry.getValue();
-                Method handlerException = resolver.resolveMethod(ex);
-                if (handlerException != null) {
-                    try {
-                        //todo 完善
-                        Object invoke = handlerException.invoke(this, method, invoker, invocation, ex);
-
-                        invocation.getInvoker().invoke(invocation);
-                        return invoke;
-
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
-                }
+    public Object resolveException(Method handlerMethod, Invoker<?> invoker, Invocation invocation, Exception ex) {
+        Class<?> handlerType = null;
+        Object serviceTarget = ProviderInvokerTargetUtils.getServiceTarget(invoker);
+        if (serviceTarget != null) {
+            handlerType = AopProxyUtils.ultimateTargetClass(serviceTarget);
+            ExceptionHandlerMethodResolver resolver = this.exceptionHandlerCache.get(handlerType);
+            if (resolver == null) {
+                resolver = new ExceptionHandlerMethodResolver(handlerType);
+                this.exceptionHandlerCache.put(handlerType, resolver);
+            }
+            Method method = resolver.resolveMethod(ex);
+            if (method != null) {
+                return doInvokerErrorHandlerMethod(handlerMethod, invoker, invocation, ex, method);
             }
         }
 
+        for (Map.Entry<DubboAdviceBean, ExceptionHandlerMethodResolver> entry : this.exceptionHandlerAdviceCache.entrySet()) {
+            DubboAdviceBean advice = entry.getKey();
+            if (advice.isApplicableToBeanType(handlerMethod.getClass())) {
+                ExceptionHandlerMethodResolver resolver = entry.getValue();
+                Method method = resolver.resolveMethod(ex);
+                if (method != null) {
+                    return doInvokerErrorHandlerMethod(handlerMethod, invoker, invocation, ex, method);
+                }
+            }
+        }
         return null;
+    }
+
+    private Object doInvokerErrorHandlerMethod(Method handlerMethod, Invoker<?> invoker, Invocation invocation, Exception ex, Method method) {
+        try {
+            //todo 完善
+            Object invoke = method.invoke(this, handlerMethod, invoker, invocation, ex);
+            return invoke;
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

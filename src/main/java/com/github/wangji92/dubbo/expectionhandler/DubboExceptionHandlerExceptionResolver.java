@@ -4,6 +4,7 @@ import com.github.wangji92.dubbo.utils.ProviderInvokerTargetUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.rpc.Invocation;
 import org.apache.dubbo.rpc.Invoker;
+import org.apache.dubbo.rpc.RpcContext;
 import org.springframework.aop.framework.AopProxyUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
@@ -58,8 +59,12 @@ public class DubboExceptionHandlerExceptionResolver implements DubboHandlerExcep
             }
             Method method = resolver.resolveMethodByThrowable(throwable);
             if (method != null) {
-                return doInvokerErrorHandlerMethod(handlerMethod, invoker, invocation, throwable, method);
+                return doInvokerErrorHandlerMethod(handlerMethod, invoker, invocation, throwable, method, serviceTarget);
             }
+        }
+        if (serviceTarget == virtualServiceTarget) {
+            log.warn("Can't find service  provider target,exception filter not ok  when called by " + RpcContext.getContext().getRemoteHost() + ". service: " + invoker.getInterface().getName() + ", method: " + invocation.getMethodName() + ", exception: " + throwable.getClass().getName() + ": " + throwable.getMessage(), throwable);
+            return null;
         }
 
         for (Map.Entry<DubboAdviceBean, ExceptionHandlerMethodResolver> entry : this.exceptionHandlerAdviceCache.entrySet()) {
@@ -68,7 +73,7 @@ public class DubboExceptionHandlerExceptionResolver implements DubboHandlerExcep
                 ExceptionHandlerMethodResolver resolver = entry.getValue();
                 Method method = resolver.resolveMethodByThrowable(throwable);
                 if (method != null) {
-                    return doInvokerErrorHandlerMethod(handlerMethod, invoker, invocation, throwable, method);
+                    return doInvokerErrorHandlerMethod(handlerMethod, invoker, invocation, throwable, method, serviceTarget);
                 }
             }
         }
@@ -95,13 +100,25 @@ public class DubboExceptionHandlerExceptionResolver implements DubboHandlerExcep
         return serviceTarget;
     }
 
-    private Object doInvokerErrorHandlerMethod(Method handlerMethod, Invoker<?> invoker, Invocation invocation, Throwable throwable, Method method) throws Throwable {
+    /**
+     * 调用异常处理器
+     *
+     * @param handlerMethod
+     * @param invoker
+     * @param invocation
+     * @param throwable
+     * @param method
+     * @param serviceTarget
+     * @return
+     * @throws Throwable
+     */
+    private Object doInvokerErrorHandlerMethod(Method handlerMethod, Invoker<?> invoker, Invocation invocation, Throwable throwable, Method method, Object serviceTarget) throws Throwable {
         try {
             //todo 完善
-            return method.invoke(this, handlerMethod, invoker, invocation, throwable);
+            return method.invoke(serviceTarget, handlerMethod, invoker, invocation, throwable);
 
         } catch (Exception e) {
-            log.error("dubbo provider error handler interface={} handlerMethod={} ", invoker.getInterface().getSimpleName(), e);
+            log.warn("Dubbo provider exception filter error when called by " + RpcContext.getContext().getRemoteHost() + ". service: " + invoker.getInterface().getName() + ", method: " + invocation.getMethodName() + ", exception: " + e.getClass().getName() + ": " + e.getMessage(), e);
             throw throwable;
         }
     }

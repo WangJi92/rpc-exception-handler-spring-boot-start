@@ -2,22 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cec6b5a2-0f64-4fce-bb5d-11561cc9a35c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/wangji92/dubbo/DubboProviderExceptionFilterAutoConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/wangji92/dubbo/DubboProviderExceptionFilterProperties.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/wangji92/dubbo/filter/DubboProviderExceptionFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/dubbo/org.apache.dubbo.rpc.Filter" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dubbo-exception-demo/src/main/java/com/github/wangji92/dubbodemo/AsyncConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dubbo-exception-demo/src/main/java/com/github/wangji92/dubbodemo/provider/AsyncService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dubbo-exception-demo/src/main/java/com/github/wangji92/dubbodemo/provider/AsyncServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/dubbo/org.apache.dubbo.rpc.Filter" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/spring.factories" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/wangji92/dubbo/DubboAdviceBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/wangji92/dubbo/expectionhandler/DubboAdviceBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/wangji92/dubbo/DubboExceptionFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/wangji92/dubbo/DubboExceptionFilter2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/wangji92/dubbo/DubboExceptionFilter3.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/wangji92/dubbo/DubboExceptionHandlerExceptionResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/wangji92/dubbo/expectionhandler/DubboExceptionHandlerExceptionResolver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/wangji92/dubbo/DubboExceptionHandlerSpringBootStartApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/wangji92/dubbo/DubboHandlerExceptionResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/wangji92/dubbo/expectionhandler/DubboHandlerExceptionResolver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/wangji92/dubbo/DubboMappingHandlerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/wangji92/dubbo/expectionhandler/DubboMappingHandlerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/wangji92/dubbo/expectionhandler/DubboExceptionHandlerExceptionResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/wangji92/dubbo/expectionhandler/DubboExceptionHandlerExceptionResolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/wangji92/dubbo/filter/DubboProviderExceptionFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/wangji92/dubbo/filter/DubboProviderExceptionFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/dubbo/org.apache.dubbo.rpc.Filter" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,14 +51,25 @@
   <component name="ProjectId" id="1sOT03RAZ40KFq77OACunnVWdjg" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/META-INF" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.github.wangji92.dubbodemo" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$/dubbo-exception-demo/src/main/resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -77,14 +84,36 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="DubboExceptionHandlerSpringBootStartApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="dubbo-exception-handler-spring-boot-start" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.github.wangji92.dubbo.DubboExceptionHandlerSpringBootStartApplication" />
+  <component name="RunManager" selected="Spring Boot.DubboExceptionDemoApplication">
+    <configuration name="AsyncConsumer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.github.wangji92.dubbodemo.AsyncConsumer" />
+      <module name="dubbo-exception-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.github.wangji92.dubbodemo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DubboExceptionDemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="dubbo-exception-demo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.github.wangji92.dubbodemo.DubboExceptionDemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.AsyncConsumer" />
+      <item itemvalue="Spring Boot.DubboExceptionDemoApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.AsyncConsumer" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -96,7 +125,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1620742409204</updated>
-      <workItem from="1620742413013" duration="21747000" />
+      <workItem from="1620742413013" duration="25859000" />
     </task>
     <task id="LOCAL-00001" summary="simple under dubbo">
       <created>1620780082391</created>
@@ -126,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620836087977</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="修改一下">
+      <created>1620917914443</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1620917914443</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,7 +182,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="simple under dubbo" />
     <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <MESSAGE value="修改一下" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改一下" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -157,19 +194,9 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/github/wangji92/dubbo/expectionhandler/DubboExceptionHandlerExceptionResolver.java</url>
-          <line>112</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/github/wangji92/dubbo/expectionhandler/DubboExceptionHandlerExceptionResolver.java</url>
-          <line>116</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/github/wangji92/dubbo/expectionhandler/DubboAdviceBean.java</url>
-          <line>186</line>
-          <option name="timeStamp" value="5" />
+          <url>file://$PROJECT_DIR$/dubbo-exception-demo/src/main/java/com/github/wangji92/dubbodemo/provider/AsyncServiceImpl.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

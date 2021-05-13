@@ -33,35 +33,39 @@ public class DubboProviderExceptionFilter implements Filter {
         if (!responseResult.hasException()) {
             return responseResult;
         }
+        if (getDubboExceptionHandlerExceptionResolver() == null) {
+            log.warn("Exception filter not  find dubbo exception handler exception resolver");
+            return responseResult;
+        }
 
-        Throwable exception = responseResult.getException();
-        if (exception instanceof RpcException) {
+        Throwable throwable = responseResult.getException();
+        if (throwable instanceof RpcException) {
             return responseResult;
         }
 
         try {
-
             Method method = invoker.getInterface().getMethod(invocation.getMethodName(), invocation.getParameterTypes());
-            if (getDubboExceptionHandlerExceptionResolver() != null) {
-                Object handlerErrorResult = getDubboExceptionHandlerExceptionResolver().resolveException(method, invoker, invocation, exception);
-                if (handlerErrorResult != null) {
+            Object handlerErrorResult = getDubboExceptionHandlerExceptionResolver().resolveException(method, invoker, invocation, throwable);
+            if (handlerErrorResult != null) {
+                Class<?> handlerErrorResultClass = handlerErrorResult.getClass();
+                // 返回的数据类型 和 返回值的类型一致
+                if (method.getReturnType().isAssignableFrom(handlerErrorResultClass)) {
                     responseResult.setException(null);
                     responseResult.setValue(handlerErrorResult);
+                } else {
+                    log.warn("Exception filter handler result return type must is assignable from original method return type  when called by " + RpcContext.getContext().getRemoteHost() + ". service: " + invoker.getInterface().getName() + ", method: " + invocation.getMethodName() + ", throwable: " + throwable.getClass().getName() + ": " + throwable.getMessage(), throwable);
                 }
-            } else {
-                log.warn("DubboExceptionFilter not  find DubboExceptionHandlerExceptionResolver");
             }
-
         } catch (NoSuchMethodException e) {
-            log.warn("Fail to DubboExceptionFilter NoSuchMethodException when called by " + RpcContext.getContext().getRemoteHost() + ". service: " + invoker.getInterface().getName() + ", method: " + invocation.getMethodName() + ", exception: " + e.getClass().getName() + ": " + e.getMessage(), e);
+            log.warn("Fail to Exception filter  when called by " + RpcContext.getContext().getRemoteHost() + ". service: " + invoker.getInterface().getName() + ", method: " + invocation.getMethodName() + ", throwable: " + e.getClass().getName() + ": " + e.getMessage(), e);
             return responseResult;
-        } catch (Throwable throwable) {
-            log.error("Fail to DubboExceptionFilter when called by " + RpcContext.getContext().getRemoteHost() + ". service: " + invoker.getInterface().getName() + ", method: " + invocation.getMethodName() + ", exception: " + throwable.getClass().getName() + ": " + throwable.getMessage(), throwable);
+        } catch (Throwable e) {
+            log.error("Fail to Exception filter when called by " + RpcContext.getContext().getRemoteHost() + ". service: " + invoker.getInterface().getName() + ", method: " + invocation.getMethodName() + ", throwable: " + e.getClass().getName() + ": " + e.getMessage(), e);
         }
         return responseResult;
     }
 
-    public DubboExceptionHandlerExceptionResolver getDubboExceptionHandlerExceptionResolver() {
+    private DubboExceptionHandlerExceptionResolver getDubboExceptionHandlerExceptionResolver() {
         return dubboExceptionHandlerExceptionResolver;
     }
 

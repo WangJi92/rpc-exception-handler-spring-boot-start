@@ -7,14 +7,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="dubbo-exception-handler-spring-boot-start" />
+        <module name="dubbo-exception-demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="dubbo-exception-demo" target="1.8" />
       <module name="dubbo-exception-handler-spring-boot-start" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="dubbo-exception-demo" options="-parameters" />
       <module name="dubbo-exception-handler-spring-boot-start" options="" />
     </option>
   </component>

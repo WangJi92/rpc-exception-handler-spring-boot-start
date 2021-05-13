@@ -1,4 +1,4 @@
-package com.github.wangji92.dubbo;
+package com.github.wangji92.dubbo.expectionhandler;
 
 import com.github.wangji92.dubbo.annotation.DubboAdvice;
 import org.springframework.beans.factory.BeanFactory;

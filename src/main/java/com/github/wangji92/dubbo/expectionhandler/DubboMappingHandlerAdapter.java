@@ -1,4 +1,4 @@
-package com.github.wangji92.dubbo;
+package com.github.wangji92.dubbo.expectionhandler;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
@@ -10,13 +10,12 @@ import org.springframework.context.ApplicationContextAware;
  * @author 汪小哥
  * @date 11-05-2021
  */
-@Slf4j
+@Deprecated
 public class DubboMappingHandlerAdapter implements InitializingBean, ApplicationContextAware {
 
 
     @Override
     public void afterPropertiesSet() throws Exception {
-
 
     }
 

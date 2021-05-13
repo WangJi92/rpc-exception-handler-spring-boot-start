@@ -1,4 +1,4 @@
-package com.github.wangji92.dubbo;
+package com.github.wangji92.dubbo.expectionhandler;
 
 import com.github.wangji92.dubbo.utils.ProviderInvokerTargetUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -9,48 +9,56 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.stereotype.Component;
 import org.springframework.web.method.annotation.ExceptionHandlerMethodResolver;
 
 import java.lang.reflect.Method;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author 汪小哥
  * @date 11-05-2021
  */
-@Component
 @Slf4j
 public class DubboExceptionHandlerExceptionResolver implements DubboHandlerExceptionResolver, InitializingBean, ApplicationContextAware {
+
+
     private ApplicationContext applicationContext;
     /**
-     * 处理的类
+     * 全局异常处理器
      */
     private final Map<DubboAdviceBean, ExceptionHandlerMethodResolver> exceptionHandlerAdviceCache = new LinkedHashMap<>();
+    /**
+     * dubbo service  target class 中的异常处理器
+     */
+    private final Map<Class<?> /*dubbo service  target class*/, ExceptionHandlerMethodResolver> exceptionHandlerCache = new ConcurrentHashMap<>(64);
+    /**
+     * dubbo 服务 提供者 实例
+     */
+    private final Map<Class<?> /*dubbo interface*/, Object /*dubbo service target*/> serviceTargetProviderCache = new ConcurrentHashMap<>(64);
 
     /**
-     * 缓存类信息
+     * 找不到缓存一个假的
      */
-    private final Map<Class<?>, ExceptionHandlerMethodResolver> exceptionHandlerCache =
-            new ConcurrentHashMap<>(64);
+    public Object virtualServiceTarget = new Object();
 
     @Override
-    public Object resolveException(Method handlerMethod, Invoker<?> invoker, Invocation invocation, Exception ex) {
-        Class<?> handlerType = null;
-        Object serviceTarget = ProviderInvokerTargetUtils.getServiceTarget(invoker);
-        if (serviceTarget != null) {
-            handlerType = AopProxyUtils.ultimateTargetClass(serviceTarget);
+    public Object resolveException(Method handlerMethod, Invoker<?> invoker, Invocation invocation, Throwable throwable) throws Throwable {
+
+        Object serviceTarget = this.getDubboServiceTarget(invoker);
+        if (serviceTarget != null && !Objects.equals(virtualServiceTarget, serviceTarget)) {
+            Class<?> handlerType = AopProxyUtils.ultimateTargetClass(serviceTarget);
             ExceptionHandlerMethodResolver resolver = this.exceptionHandlerCache.get(handlerType);
             if (resolver == null) {
                 resolver = new ExceptionHandlerMethodResolver(handlerType);
                 this.exceptionHandlerCache.put(handlerType, resolver);
             }
-            Method method = resolver.resolveMethod(ex);
+            Method method = resolver.resolveMethodByThrowable(throwable);
             if (method != null) {
-                return doInvokerErrorHandlerMethod(handlerMethod, invoker, invocation, ex, method);
+                return doInvokerErrorHandlerMethod(handlerMethod, invoker, invocation, throwable, method);
             }
         }
 
@@ -58,23 +66,43 @@ public class DubboExceptionHandlerExceptionResolver implements DubboHandlerExcep
             DubboAdviceBean advice = entry.getKey();
             if (advice.isApplicableToBeanType(handlerMethod.getClass())) {
                 ExceptionHandlerMethodResolver resolver = entry.getValue();
-                Method method = resolver.resolveMethod(ex);
+                Method method = resolver.resolveMethodByThrowable(throwable);
                 if (method != null) {
-                    return doInvokerErrorHandlerMethod(handlerMethod, invoker, invocation, ex, method);
+                    return doInvokerErrorHandlerMethod(handlerMethod, invoker, invocation, throwable, method);
                 }
             }
         }
         return null;
     }
 
-    private Object doInvokerErrorHandlerMethod(Method handlerMethod, Invoker<?> invoker, Invocation invocation, Exception ex, Method method) {
+    /**
+     * 获取dubbo 服务提供者的 实例对象
+     *
+     * @param invoker
+     * @return
+     */
+    private Object getDubboServiceTarget(Invoker<?> invoker) {
+        Object serviceTarget = serviceTargetProviderCache.get(invoker.getInterface());
+        if (serviceTarget == null) {
+            synchronized (invoker.getInterface()) {
+                serviceTarget = ProviderInvokerTargetUtils.getServiceTarget(invoker);
+                if (serviceTarget == null) {
+                    serviceTarget = virtualServiceTarget;
+                }
+                serviceTargetProviderCache.put(invoker.getInterface(), serviceTarget);
+            }
+        }
+        return serviceTarget;
+    }
+
+    private Object doInvokerErrorHandlerMethod(Method handlerMethod, Invoker<?> invoker, Invocation invocation, Throwable throwable, Method method) throws Throwable {
         try {
             //todo 完善
-            Object invoke = method.invoke(this, handlerMethod, invoker, invocation, ex);
-            return invoke;
+            return method.invoke(this, handlerMethod, invoker, invocation, throwable);
 
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            log.error("dubbo provider error handler interface={} handlerMethod={} ", invoker.getInterface().getSimpleName(), e);
+            throw throwable;
         }
     }
 

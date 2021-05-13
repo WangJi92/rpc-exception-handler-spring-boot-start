@@ -23,32 +23,31 @@ public class ProviderInvokerTargetUtils {
      * @return
      */
     public static Object getServiceTarget(Invoker<?> invoker) {
-        Object target = null;
         if (!(invoker instanceof RegistryProtocol.InvokerDelegate)) {
-            return target;
+            return null;
         }
         Invoker delegateProviderMetaDataInvokerObject = ((RegistryProtocol.InvokerDelegate) invoker).getInvoker();
         if (!(delegateProviderMetaDataInvokerObject instanceof DelegateProviderMetaDataInvoker)) {
-            return target;
+            return null;
         }
 
         DelegateProviderMetaDataInvoker delegateProviderMetaDataInvoker = (DelegateProviderMetaDataInvoker) ((RegistryProtocol.InvokerDelegate) invoker).getInvoker();
 
         Field proxyInvokerField = ReflectionUtils.findField(delegateProviderMetaDataInvoker.getClass(), "invoker");
         if (proxyInvokerField == null) {
-            return target;
+            return null;
         }
         ReflectionUtils.makeAccessible(proxyInvokerField);
         AbstractProxyInvoker proxyInvoker = (AbstractProxyInvoker) ReflectionUtils.getField(proxyInvokerField, delegateProviderMetaDataInvoker);
         if (proxyInvoker == null) {
-            return target;
+            return null;
         }
         Field proxyServiceField = ReflectionUtils.findField(proxyInvoker.getClass(), "proxy");
         if (proxyServiceField == null) {
-            return target;
+            return null;
         }
         ReflectionUtils.makeAccessible(proxyServiceField);
-        target = ReflectionUtils.getField(proxyServiceField, proxyInvoker);
-        return target;
+
+        return ReflectionUtils.getField(proxyServiceField, proxyInvoker);
     }
 }

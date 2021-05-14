@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
+import java.util.Random;
 
 /**
  * @author 汪小哥
@@ -19,8 +20,11 @@ public class AsyncServiceImpl implements AsyncService, Serializable {
     @Override
     public String sayHello(String name) {
         System.out.println("async provider received: " + name);
-        if (1 == 1) {
+        int i = new Random().nextInt(100);
+        if (i % 2 == 0) {
             throw new RuntimeException("222");
+        } else if (i % 2 == 1) {
+            throw new IllegalArgumentException("222");
         }
 
         return "hello, " + name;

@@ -75,7 +75,7 @@ public class DubboExceptionHandlerExceptionResolver implements DubboHandlerExcep
                 DubboExceptionHandlerMethodResolver resolver = entry.getValue();
                 Method method = resolver.resolveMethodByThrowable(throwable);
                 if (method != null && ClassUtils.isAssignable(dubboMethod.getReturnType(), method.getReturnType())) {
-                    return this.doInvokerErrorHandlerMethod(dubboMethod, invoker, invocation, throwable, method, serviceTarget);
+                    return this.doInvokerErrorHandlerMethod(dubboMethod, invoker, invocation, throwable, method, advice.resolveBean());
                 }
             }
         }

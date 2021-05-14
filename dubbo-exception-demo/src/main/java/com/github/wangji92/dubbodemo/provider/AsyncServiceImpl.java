@@ -1,5 +1,6 @@
 package com.github.wangji92.dubbodemo.provider;
 
+import com.github.wangji92.dubbo.annotation.DubboAdvice;
 import com.github.wangji92.dubbo.annotation.DubboExceptionHandler;
 import org.apache.dubbo.rpc.Invocation;
 import org.apache.dubbo.rpc.Invoker;
@@ -13,6 +14,7 @@ import java.lang.reflect.Method;
  * @date 13-05-2021
  */
 @Component
+@DubboAdvice
 public class AsyncServiceImpl implements AsyncService, Serializable {
     @Override
     public String sayHello(String name) {

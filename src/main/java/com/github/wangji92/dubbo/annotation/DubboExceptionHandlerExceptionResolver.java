@@ -125,16 +125,18 @@ public class DubboExceptionHandlerExceptionResolver implements DubboHandlerExcep
                     args[index] = handlerMethod;
                 } else if (ClassUtils.isAssignable(Invoker.class, parameterTypes[index])) {
                     args[index] = invoker;
+                } else if (ClassUtils.isAssignable(Invocation.class, parameterTypes[index])) {
+                    args[index] = invocation;
                 } else if (ClassUtils.isAssignable(Throwable.class, parameterTypes[index])) {
                     args[index] = throwable;
                 } else {
-                    throw new IllegalStateException("Can't Resolve ClassType =" + parameterTypes.getClass());
+                    throw new IllegalStateException("Can't Resolve ClassType =" + parameterTypes[index].getName());
                 }
             }
             ReflectionUtils.makeAccessible(method);
             return ReflectionUtils.invokeMethod(method, serviceTarget, args);
         } catch (Exception e) {
-            throw throwable;
+            throw e;
         }
     }
 

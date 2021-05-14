@@ -47,20 +47,14 @@ public class DubboProviderExceptionFilter implements Filter {
             Method method = invoker.getInterface().getMethod(invocation.getMethodName(), invocation.getParameterTypes());
             Object handlerErrorResult = getDubboExceptionHandlerExceptionResolver().resolveException(method, invoker, invocation, throwable);
             if (handlerErrorResult != null) {
-                Class<?> handlerErrorResultClass = handlerErrorResult.getClass();
-                // 返回的数据类型 和 返回值的类型一致
-                if (method.getReturnType().isAssignableFrom(handlerErrorResultClass)) {
-                    responseResult.setException(null);
-                    responseResult.setValue(handlerErrorResult);
-                } else {
-                    log.warn("Exception filter handler result return type must is assignable from original method return type  when called by " + RpcContext.getContext().getRemoteHost() + ". service: " + invoker.getInterface().getName() + ", method: " + invocation.getMethodName() + ", throwable: " + throwable.getClass().getName() + ": " + throwable.getMessage(), throwable);
-                }
+                responseResult.setException(null);
+                responseResult.setValue(handlerErrorResult);
             }
         } catch (NoSuchMethodException e) {
-            log.warn("Fail to Exception filter  when called by " + RpcContext.getContext().getRemoteHost() + ". service: " + invoker.getInterface().getName() + ", method: " + invocation.getMethodName() + ", throwable: " + e.getClass().getName() + ": " + e.getMessage(), e);
+            log.warn("Fail to Exception filter  when called by {} service:{} method:{} throwable={}", RpcContext.getContext().getRemoteHost(), invoker.getInterface().getName(), invocation.getMethodName(), throwable.getClass().getName() + ": " + throwable.getMessage(), throwable);
             return responseResult;
         } catch (Throwable e) {
-            log.error("Fail to Exception filter when called by " + RpcContext.getContext().getRemoteHost() + ". service: " + invoker.getInterface().getName() + ", method: " + invocation.getMethodName() + ", throwable: " + e.getClass().getName() + ": " + e.getMessage(), e);
+            log.error("Fail to Exception filter when called by{} service:{} method:{} throwable={}", RpcContext.getContext().getRemoteHost(), invoker.getInterface().getName(), invocation.getMethodName(), throwable.getClass().getName() + ": " + throwable.getMessage(), throwable);
         }
         return responseResult;
     }

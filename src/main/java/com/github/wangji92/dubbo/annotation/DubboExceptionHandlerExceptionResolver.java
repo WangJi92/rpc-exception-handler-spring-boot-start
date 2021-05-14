@@ -10,6 +10,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.util.ClassUtils;
 
 import java.lang.reflect.Method;
 import java.util.LinkedHashMap;
@@ -57,12 +58,12 @@ public class DubboExceptionHandlerExceptionResolver implements DubboHandlerExcep
                 this.exceptionHandlerCache.put(handlerType, resolver);
             }
             Method method = resolver.resolveMethodByThrowable(throwable);
-            if (method != null) {
+            if (method != null && ClassUtils.isAssignable(dubboMethod.getReturnType(), method.getReturnType())) {
                 return doInvokerErrorHandlerMethod(dubboMethod, invoker, invocation, throwable, method, serviceTarget);
             }
         }
         if (serviceTarget == virtualServiceTarget) {
-            log.warn("Can't find service  provider target,exception filter not ok  when called by " + RpcContext.getContext().getRemoteHost() + ". service: " + invoker.getInterface().getName() + ", method: " + invocation.getMethodName() + ", exception: " + throwable.getClass().getName() + ": " + throwable.getMessage(), throwable);
+            log.warn("Can't find service  provider target {} service:{} method:{} method return type={} ", RpcContext.getContext().getRemoteHost(), invoker.getInterface().getName(), invocation.getMethodName(), dubboMethod.getReturnType().getName());
             return null;
         }
 
@@ -71,11 +72,12 @@ public class DubboExceptionHandlerExceptionResolver implements DubboHandlerExcep
             if (advice.isApplicableToBeanType(dubboMethod.getClass())) {
                 DubboExceptionHandlerMethodResolver resolver = entry.getValue();
                 Method method = resolver.resolveMethodByThrowable(throwable);
-                if (method != null && method.getReturnType().isAssignableFrom(dubboMethod.getReturnType())) {
+                if (method != null && ClassUtils.isAssignable(dubboMethod.getReturnType(), method.getReturnType())) {
                     return doInvokerErrorHandlerMethod(dubboMethod, invoker, invocation, throwable, method, serviceTarget);
                 }
             }
         }
+        log.warn("Dubbo provider exception filter not find @DubboExceptionHandler can resolver {} service:{} method:{} method return type={} ", RpcContext.getContext().getRemoteHost(), invoker.getInterface().getName(), invocation.getMethodName(), dubboMethod.getReturnType().getName());
         return null;
     }
 
@@ -117,7 +119,6 @@ public class DubboExceptionHandlerExceptionResolver implements DubboHandlerExcep
             return method.invoke(serviceTarget, handlerMethod, invoker, invocation, throwable);
 
         } catch (Exception e) {
-            log.warn("Dubbo provider exception filter error when called by " + RpcContext.getContext().getRemoteHost() + ". service: " + invoker.getInterface().getName() + ", method: " + invocation.getMethodName() + ", exception: " + e.getClass().getName() + ": " + e.getMessage(), e);
             throw throwable;
         }
     }
@@ -129,7 +130,6 @@ public class DubboExceptionHandlerExceptionResolver implements DubboHandlerExcep
 
     private void initExceptionHandlerAdviceCache() {
         List<DubboAdviceBean> annotatedBeans = DubboAdviceBean.findAnnotatedBeans(applicationContext);
-
         for (DubboAdviceBean adviceBean : annotatedBeans) {
             Class<?> beanType = adviceBean.getBeanType();
             if (beanType == null) {
@@ -144,7 +144,7 @@ public class DubboExceptionHandlerExceptionResolver implements DubboHandlerExcep
         if (handlerSize == 0) {
             log.debug("ControllerAdvice beans: none");
         } else {
-            log.debug("DubboAdvice beans: " + handlerSize + " @ExceptionHandler ");
+            log.debug("DubboAdvice beans:{} @DubboAdvice", handlerSize);
         }
     }
 

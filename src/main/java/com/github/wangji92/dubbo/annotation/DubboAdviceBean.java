@@ -11,12 +11,13 @@ import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 import org.springframework.util.ClassUtils;
 import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.method.HandlerTypePredicate;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 构建全局处理 dubbo 异常 元数据
+ *
  * @author 汪小哥
  * @date 11-05-2021
  */
@@ -38,7 +39,7 @@ public class DubboAdviceBean implements Ordered {
     @Nullable
     private final Class<?> beanType;
 
-    private final HandlerTypePredicate beanTypePredicate;
+    private final DubboExceptionHandlerTypePredicate beanTypePredicate;
 
     @Nullable
     private final BeanFactory beanFactory;
@@ -58,7 +59,6 @@ public class DubboAdviceBean implements Ordered {
 
 
     /**
-     *
      * @param beanName
      * @param beanFactory
      * @param controllerAdvice
@@ -66,19 +66,16 @@ public class DubboAdviceBean implements Ordered {
     public DubboAdviceBean(String beanName, BeanFactory beanFactory, @Nullable DubboAdvice controllerAdvice) {
         Assert.hasText(beanName, "Bean name must contain text");
         Assert.notNull(beanFactory, "BeanFactory must not be null");
-        Assert.isTrue(beanFactory.containsBean(beanName), () -> "BeanFactory [" + beanFactory +
-                "] does not contain specified controller advice bean '" + beanName + "'");
+        Assert.isTrue(beanFactory.containsBean(beanName), () -> "BeanFactory [" + beanFactory + "] does not contain specified controller advice bean '" + beanName + "'");
 
         this.beanOrName = beanName;
         this.beanType = getBeanType(beanName, beanFactory);
-        this.beanTypePredicate = (controllerAdvice != null ? createBeanTypePredicate(controllerAdvice) :
-                createBeanTypePredicate(this.beanType));
+        this.beanTypePredicate = (controllerAdvice != null ? createBeanTypePredicate(controllerAdvice) : createBeanTypePredicate(this.beanType));
         this.beanFactory = beanFactory;
     }
 
 
     /**
-     *
      * @return
      */
     @Override
@@ -163,10 +160,10 @@ public class DubboAdviceBean implements Ordered {
 
 
     /**
-     * Find beans annotated with {@link ControllerAdvice @ControllerAdvice} in the
-     * given {@link ApplicationContext} and wrap them as {@code ControllerAdviceBean}
+     * Find beans annotated with {@link DubboAdvice @DubboAdvice} in the
+     * given {@link ApplicationContext} and wrap them as {@code DubboAdviceBean}
      * instances.
-     * <p>As of Spring Framework 5.2, the {@code ControllerAdviceBean} instances
+     * <p>As of Spring Framework 5.2, the {@code DubboAdviceBean} instances
      * in the returned list are sorted using {@link OrderComparator#sort(List)}.
      *
      * @see #getOrder()
@@ -193,21 +190,21 @@ public class DubboAdviceBean implements Ordered {
         return (beanType != null ? ClassUtils.getUserClass(beanType) : null);
     }
 
-    private static HandlerTypePredicate createBeanTypePredicate(@Nullable Class<?> beanType) {
+    private static DubboExceptionHandlerTypePredicate createBeanTypePredicate(@Nullable Class<?> beanType) {
         DubboAdvice controllerAdvice = (beanType != null ?
                 AnnotatedElementUtils.findMergedAnnotation(beanType, DubboAdvice.class) : null);
         return createBeanTypePredicate(controllerAdvice);
     }
 
-    private static HandlerTypePredicate createBeanTypePredicate(@Nullable DubboAdvice controllerAdvice) {
+    private static DubboExceptionHandlerTypePredicate createBeanTypePredicate(@Nullable DubboAdvice controllerAdvice) {
         if (controllerAdvice != null) {
-            return HandlerTypePredicate.builder()
+            return DubboExceptionHandlerTypePredicate.builder()
                     .basePackage(controllerAdvice.basePackages())
                     .basePackageClass(controllerAdvice.basePackageClasses())
                     .assignableType(controllerAdvice.assignableTypes())
                     .annotation(controllerAdvice.annotations())
                     .build();
         }
-        return HandlerTypePredicate.forAnyHandlerType();
+        return DubboExceptionHandlerTypePredicate.forAnyHandlerType();
     }
 }

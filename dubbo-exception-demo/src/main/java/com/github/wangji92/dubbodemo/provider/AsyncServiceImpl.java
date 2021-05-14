@@ -1,9 +1,9 @@
 package com.github.wangji92.dubbodemo.provider;
 
+import com.github.wangji92.dubbo.annotation.DubboExceptionHandler;
 import org.apache.dubbo.rpc.Invocation;
 import org.apache.dubbo.rpc.Invoker;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
@@ -34,7 +34,7 @@ public class AsyncServiceImpl implements AsyncService, Serializable {
         return "timed value";
     }
 
-    @ExceptionHandler(value = RuntimeException.class)
+    @DubboExceptionHandler(value = RuntimeException.class)
     public AsyncServiceImpl handlerEx(Method handlerMethod, Invoker<?> invoker, Invocation invocation, Exception ex) {
         System.out.println("handler");
         return new AsyncServiceImpl();

@@ -29,6 +29,6 @@
     <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
 
     <dubbo:reference cluster="failfast" async="true" id="asyncServiceImpl"
-                     interface="com.github.wangji92.dubbodemo.provider.AsyncService" timeout="1000"/>
+                     interface="com.github.wangji92.dubbodemo.provider.AsyncService" timeout="10000"/>
 
 </beans>

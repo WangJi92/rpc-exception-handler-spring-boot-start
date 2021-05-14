@@ -34,7 +34,7 @@ public class DubboProviderExceptionFilter implements Filter {
             return responseResult;
         }
         if (getDubboExceptionHandlerExceptionResolver() == null) {
-            log.warn("Exception filter not  find dubbo exception handler exception resolver");
+            log.warn("Exception filter not  find dubbo exception handler exception resolver you can setting dubbo.provider.exception.enable = true");
             return responseResult;
         }
 

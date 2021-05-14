@@ -1,4 +1,4 @@
-package com.github.wangji92.dubbo.expectionhandler;
+package com.github.wangji92.dubbo.annotation;
 
 import org.apache.dubbo.rpc.Invocation;
 import org.apache.dubbo.rpc.Invoker;
@@ -14,12 +14,12 @@ public interface DubboHandlerExceptionResolver {
     /**
      * 处理异常
      *
-     * @param method
+     * @param dubboMethod
      * @param invoker
      * @param invocation
      * @param throwable
      * @return
      * @throws Throwable
      */
-    Object resolveException(Method method, Invoker<?> invoker, Invocation invocation, Throwable throwable) throws Throwable;
+    Object resolveException(Method dubboMethod, Invoker<?> invoker, Invocation invocation, Throwable throwable) throws Throwable;
 }

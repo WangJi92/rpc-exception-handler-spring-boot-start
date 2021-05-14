@@ -1,6 +1,6 @@
 package com.github.wangji92.dubbo.filter;
 
-import com.github.wangji92.dubbo.expectionhandler.DubboExceptionHandlerExceptionResolver;
+import com.github.wangji92.dubbo.annotation.DubboExceptionHandlerExceptionResolver;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.common.constants.CommonConstants;
 import org.apache.dubbo.common.extension.Activate;

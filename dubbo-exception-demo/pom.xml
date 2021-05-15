@@ -16,7 +16,7 @@
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
-        <dubbo.version>2.7.1</dubbo.version>
+        <dubbo.version>3.0.0.preview</dubbo.version>
     </properties>
     <dependencies>
         <dependency>
@@ -61,17 +61,18 @@
             <artifactId>rpc-exception-spring-boot-start</artifactId>
             <scope>compile</scope>
         </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>com.github.WangJi92</groupId>-->
+        <!--            <artifactId>dubbo-exception-filter-low</artifactId>-->
+        <!--            <scope>compile</scope>-->
+        <!--        </dependency>-->
+
         <dependency>
+            <!--        high does not work at all with dubbo 2.7.0-->
             <groupId>com.github.WangJi92</groupId>
-            <artifactId>dubbo-exception-filter-low</artifactId>
+            <artifactId>dubbo-exception-filter-high</artifactId>
             <scope>compile</scope>
         </dependency>
-        <!--        high does not work at all with dubbo 2.7.0-->
-        <!--                        <dependency>-->
-        <!--                            <groupId>com.github.WangJi92</groupId>-->
-        <!--                            <artifactId>dubbo-exception-filter-high</artifactId>-->
-        <!--                            <scope>compile</scope>-->
-        <!--                        </dependency>-->
     </dependencies>
 
     <build>

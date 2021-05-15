@@ -125,10 +125,8 @@ public class RpcServiceAdviceBean implements Ordered {
 
     /**
      * Check whether the given bean type should be advised by this
-     * {@code ControllerAdviceBean}.
      *
      * @param beanType the type of the bean to check
-     * @see ControllerAdvice
      * @since 4.0
      */
     public boolean isApplicableToBeanType(@Nullable Class<?> beanType) {

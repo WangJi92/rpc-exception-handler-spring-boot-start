@@ -27,22 +27,13 @@ public class DefaultRpcServiceHandlerExceptionResolver implements RpcServiceHand
 
     private ApplicationContext applicationContext;
     /**
-     * 全局异常处理器
+     * Global Exception Handler
      */
     private final Map<RpcServiceAdviceBean, RpcServiceExceptionHandlerMethodResolver> exceptionHandlerAdviceCache = new LinkedHashMap<>();
     /**
-     * dubbo service  target class 中的异常处理器
+     * Exception handlers in the rpc service target class
      */
     private final Map<Class<?>, RpcServiceExceptionHandlerMethodResolver> exceptionHandlerCache = new ConcurrentHashMap<>(64);
-    /**
-     * dubbo 服务 提供者 实例
-     */
-    private final Map<Class<?>, Object> serviceTargetProviderCache = new ConcurrentHashMap<>(64);
-
-    /**
-     * 找不到缓存一个假的
-     */
-    public Object virtualServiceTarget = new Object();
 
     @Override
     public Object resolveException(Method rpcServiceMethod, Throwable throwable, Object rpcServiceTarget, Object[] args) throws Throwable {
@@ -75,7 +66,9 @@ public class DefaultRpcServiceHandlerExceptionResolver implements RpcServiceHand
 
 
     /**
-     * 调用异常处理的方法
+     * Calling the exception handling methods
+     * <p>
+     * eg : handlerIllegalArgumentException(java.lang.reflect.Method, org.apache.dubbo.rpc.Invoker, org.apache.dubbo.rpc.Invocation, java.lang.IllegalArgumentException)
      *
      * @param method
      * @param methodTarget
@@ -90,17 +83,17 @@ public class DefaultRpcServiceHandlerExceptionResolver implements RpcServiceHand
             Object[] args = new Object[parameterTypes.length];
             for (int index = 0; index < parameterTypes.length; index++) {
                 // simple to  resolve parameter
-                if (ClassUtils.isAssignable(Throwable.class, parameterTypes[index])) {
+                if (ClassUtils.isAssignable(parameterTypes[index], throwable.getClass())) {
                     args[index] = throwable;
                     continue;
                 }
-                if (ClassUtils.isAssignable(Method.class, parameterTypes[index])) {
+                if (ClassUtils.isAssignable(parameterTypes[index], method.getClass())) {
                     args[index] = rpcServiceMethod;
                     continue;
                 }
 
                 for (Object providerArg : providerArgs) {
-                    if (ClassUtils.isAssignable(providerArg.getClass(), parameterTypes[index])) {
+                    if (ClassUtils.isAssignable(parameterTypes[index], providerArg.getClass())) {
                         args[index] = throwable;
                         break;
                     }

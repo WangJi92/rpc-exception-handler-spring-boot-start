@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cec6b5a2-0f64-4fce-bb5d-11561cc9a35c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_WangJi92_dubbo_exception_handler_spring_boot_start_0_0_1_SNAPSHOT.xml" beforeDir="false" />
+    <list default="true" id="cec6b5a2-0f64-4fce-bb5d-11561cc9a35c" name="Default Changelist" comment="big change 目标">
+      <change afterPath="$PROJECT_DIR$/rpc-exception-spi/src/main/java/com/github/wangji92/rpc/constant/RpcServiceConstant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dubbo-exception-demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dubbo-exception-demo/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dubbo-exception-demo/src/main/java/com/github/wangji92/dubbodemo/DubboGlobalExceptionAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/dubbo-exception-demo/src/main/java/com/github/wangji92/dubbodemo/DubboGlobalExceptionAdvice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dubbo-exception-demo/src/main/java/com/github/wangji92/dubbodemo/provider/AsyncServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/dubbo-exception-demo/src/main/java/com/github/wangji92/dubbodemo/provider/AsyncServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dubbo-exception-demo/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/dubbo-exception-demo/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dubbo-exception-filter/src/main/java/com/github/wangji92/rpc/dubbo/filter/DubboProviderExceptionFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/dubbo-exception-filter/src/main/java/com/github/wangji92/rpc/dubbo/filter/DubboProviderExceptionFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-exception-core/src/main/java/com/github/wangji92/rpc/annotation/DefaultRpcServiceHandlerExceptionResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-exception-core/src/main/java/com/github/wangji92/rpc/annotation/DefaultRpcServiceHandlerExceptionResolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-exception-spring-boot-start/src/main/java/com/github/wangji92/rpc/RpcServiceProviderExceptionFilterAutoConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-exception-spring-boot-start/src/main/java/com/github/wangji92/rpc/RpcServiceProviderExceptionFilterAutoConfig.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,14 +22,17 @@
       <favorite_root url="org.apache.dubbo.config.spring.beans.factory.annotation.ReferenceAnnotationBeanPostProcessor org.apache.dubbo.config.spring.ServiceBean getServiceBean(java.lang.String referencedBeanName)" type="method" klass="com.intellij.ide.favoritesTreeView.smartPointerPsiNodes.MethodSmartPointerNode" />
       <favorite_root url="org.apache.dubbo.config.spring.beans.factory.annotation.ReferenceAnnotationBeanPostProcessor" type="class" klass="com.intellij.ide.favoritesTreeView.smartPointerPsiNodes.ClassSmartPointerNode" />
     </favorites_list>
+    <favorites_list name="自动注入bean 的实现">
+      <favorite_root url="org.apache.dubbo.config.spring.util.DubboBeanUtils T getOptionalBean(org.springframework.beans.factory.ListableBeanFactory beanFactory, java.lang.String beanName, java.lang.Class&lt;T&gt; beanType)" type="method" klass="com.intellij.ide.favoritesTreeView.smartPointerPsiNodes.MethodSmartPointerNode" />
+    </favorites_list>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="AnnotationType" />
         <option value="Class" />
         <option value="package-info" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -63,14 +63,8 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/rpc-exception-spring-boot-start/src/main/resources" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources/META-INF" />
-    </key>
     <key name="CreateBuilderDialog.RecentsKey">
       <recent name="com.github.wangji92.dubbo.annotation" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.github.wangji92.dubbodemo" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/rpc-exception-spring-boot-start/src/main/resources" />
@@ -78,6 +72,12 @@
       <recent name="$PROJECT_DIR$/rpc-exception-spi" />
       <recent name="$PROJECT_DIR$/rpc-exception-core" />
       <recent name="$PROJECT_DIR$/dubbo-exception-filter-2.7" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.github.wangji92.dubbodemo" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/META-INF" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -314,7 +314,8 @@
     <MESSAGE value="edit 3" />
     <MESSAGE value="edit 4" />
     <MESSAGE value="big change 目标" />
-    <option name="LAST_COMMIT_MESSAGE" value="big change 目标" />
+    <MESSAGE value="big change" />
+    <option name="LAST_COMMIT_MESSAGE" value="big change" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -351,23 +352,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/dubbo-exception-filter/src/main/java/com/github/wangji92/rpc/dubbo/filter/DubboProviderExceptionFilter.java</url>
-          <line>51</line>
+          <line>55</line>
           <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/rpc-exception-spring-boot-start/src/main/java/com/github/wangji92/rpc/RpcServiceProviderExceptionFilterAutoConfig.java</url>
-          <line>21</line>
+          <line>22</line>
           <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/dubbo-exception-filter/src/main/java/com/github/wangji92/rpc/dubbo/filter/DubboProviderExceptionFilter.java</url>
-          <line>96</line>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/dubbo-exception-filter/src/main/java/com/github/wangji92/rpc/dubbo/filter/DubboProviderExceptionFilter.java</url>
-          <line>100</line>
-          <option name="timeStamp" value="33" />
+          <url>file://$PROJECT_DIR$/rpc-exception-core/src/main/java/com/github/wangji92/rpc/annotation/DefaultRpcServiceHandlerExceptionResolver.java</url>
+          <line>104</line>
+          <option name="timeStamp" value="38" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

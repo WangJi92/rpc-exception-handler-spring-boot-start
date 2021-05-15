@@ -5,6 +5,7 @@ import com.github.wangji92.rpc.spi.RpcServiceHandlerExceptionResolver;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.common.constants.CommonConstants;
 import org.apache.dubbo.common.extension.Activate;
+import org.apache.dubbo.config.spring.extension.SpringExtensionFactory;
 import org.apache.dubbo.rpc.*;
 
 import java.lang.reflect.Method;
@@ -30,6 +31,9 @@ public class DubboProviderExceptionFilter implements Filter, Filter.Listener {
      */
     public Object virtualServiceTarget = new Object();
 
+    /**
+     * this field name equals to RpcServiceHandlerExceptionResolver bean name {@linkplain SpringExtensionFactory#getExtension(java.lang.Class, java.lang.String) }
+     */
     private RpcServiceHandlerExceptionResolver rpcServiceHandlerExceptionResolver;
 
     @Override
@@ -93,7 +97,7 @@ public class DubboProviderExceptionFilter implements Filter, Filter.Listener {
     }
 
 
-    public RpcServiceHandlerExceptionResolver getRpcServiceHandlerExceptionResolver() {
+    private RpcServiceHandlerExceptionResolver getRpcServiceHandlerExceptionResolver() {
         return rpcServiceHandlerExceptionResolver;
     }
 

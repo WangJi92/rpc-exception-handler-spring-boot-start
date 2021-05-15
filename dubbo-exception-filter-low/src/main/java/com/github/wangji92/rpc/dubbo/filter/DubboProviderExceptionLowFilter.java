@@ -5,7 +5,6 @@ import com.github.wangji92.rpc.dubbo.utils.ProviderInvokerTargetUtils;
 import com.github.wangji92.rpc.spi.RpcServiceHandlerExceptionResolver;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.common.extension.Activate;
-import org.apache.dubbo.config.spring.extension.SpringExtensionFactory;
 import org.apache.dubbo.rpc.*;
 
 import java.lang.reflect.Method;
@@ -20,7 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @Activate(group = "provider", order = RpcServiceConstant.DUBBO_PROVIDER_EXCEPTION_FILTER_ORDER)
 @Slf4j
-public class DubboProviderExceptionFilter implements Filter, Filter.Listener {
+public class DubboProviderExceptionLowFilter implements Filter {
     /**
      * dubbo Service Provider Instance
      */
@@ -32,7 +31,7 @@ public class DubboProviderExceptionFilter implements Filter, Filter.Listener {
     public Object virtualServiceTarget = new Object();
 
     /**
-     * this field name equals to RpcServiceHandlerExceptionResolver bean name {@linkplain SpringExtensionFactory#getExtension(java.lang.Class, java.lang.String) }
+     * this field name equals to RpcServiceHandlerExceptionResolver bean name {@linkplain org.apache.dubbo.config.spring.extension.SpringExtensionFactory#getExtension(Class, String) }
      */
     private RpcServiceHandlerExceptionResolver rpcServiceHandlerExceptionResolver;
 
@@ -42,38 +41,36 @@ public class DubboProviderExceptionFilter implements Filter, Filter.Listener {
     }
 
     @Override
-    public void onResponse(Result appResponse, Invoker<?> invoker, Invocation invocation) {
-        this.handlerError(invoker, invocation, appResponse);
+    public Result onResponse(Result result, Invoker<?> invoker, Invocation invocation) {
+        if (result.hasException()) {
+            return this.handlerError(invoker, invocation, result);
+        }
+        return result;
     }
 
-    @Override
-    public void onError(Throwable t, Invoker<?> invoker, Invocation invocation) {
-        AppResponse appResponse = new AppResponse(t);
-        this.handlerError(invoker, invocation, appResponse);
-    }
 
-    private void handlerError(Invoker<?> invoker, Invocation invocation, Result responseResult) {
+    private Result handlerError(Invoker<?> invoker, Invocation invocation, Result responseResult) {
         Throwable throwable = responseResult.getException();
         if (throwable instanceof RpcException) {
-            return;
+            return responseResult;
         }
         if (getRpcServiceHandlerExceptionResolver() == null) {
             log.warn("Exception filter not  find dubbo exception handler exception resolver you can setting dubbo.provider.exception.enable = true");
-            return;
+            return responseResult;
         }
         try {
             Method method = invoker.getInterface().getMethod(invocation.getMethodName(), invocation.getParameterTypes());
             Object dubboServiceTarget = this.getDubboServiceTarget(invoker);
             Object handlerErrorResult = getRpcServiceHandlerExceptionResolver().resolveException(method, throwable, dubboServiceTarget, new Object[]{invoker, invocation});
             if (handlerErrorResult != null) {
-                responseResult.setException(null);
-                responseResult.setValue(handlerErrorResult);
+                return new RpcResult(handlerErrorResult);
             }
         } catch (NoSuchMethodException e) {
             log.warn("Fail to Exception filter  when called by {} service:{} method:{} throwable={}", RpcContext.getContext().getRemoteHost(), invoker.getInterface().getName(), invocation.getMethodName(), throwable.getClass().getName() + ": " + throwable.getMessage(), e);
         } catch (Throwable e) {
             log.error("Fail to Exception filter when called by{} service:{} method:{} throwable={}", RpcContext.getContext().getRemoteHost(), invoker.getInterface().getName(), invocation.getMethodName(), throwable.getClass().getName() + ": " + throwable.getMessage(), e);
         }
+        return responseResult;
     }
 
     /**

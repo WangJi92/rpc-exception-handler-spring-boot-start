@@ -17,9 +17,9 @@
     <bytecodeTargetLevel>
       <module name="dubbo-exception-demo" target="1.8" />
       <module name="dubbo-exception-filter" target="1.8" />
-      <module name="dubbo-exception-filter-low" target="1.5" />
-      <module name="dubbo-exception-handler-spring-boot-start" target="1.8" />
+      <module name="dubbo-exception-filter-low" target="1.8" />
       <module name="rpc-exception-core" target="1.8" />
+      <module name="rpc-exception-handler-spring-boot-start" target="1.8" />
       <module name="rpc-exception-spi" target="1.8" />
       <module name="rpc-exception-spring-boot-start" target="1.8" />
     </bytecodeTargetLevel>
@@ -27,7 +27,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="dubbo-exception-demo" options="" />
-      <module name="dubbo-exception-handler-spring-boot-start" options="" />
+      <module name="rpc-exception-handler-spring-boot-start" options="" />
     </option>
   </component>
 </project>

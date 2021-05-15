@@ -5,8 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/dubbo-exception-demo/dubbo-exception-demo.iml" filepath="$PROJECT_DIR$/dubbo-exception-demo/dubbo-exception-demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/dubbo-exception-filter/dubbo-exception-filter.iml" filepath="$PROJECT_DIR$/dubbo-exception-filter/dubbo-exception-filter.iml" />
       <module fileurl="file://$PROJECT_DIR$/dubbo-exception-filter-low/dubbo-exception-filter-low.iml" filepath="$PROJECT_DIR$/dubbo-exception-filter-low/dubbo-exception-filter-low.iml" />
-      <module fileurl="file://$PROJECT_DIR$/dubbo-exception-handler-spring-boot-start.iml" filepath="$PROJECT_DIR$/dubbo-exception-handler-spring-boot-start.iml" />
       <module fileurl="file://$PROJECT_DIR$/rpc-exception-core/rpc-exception-core.iml" filepath="$PROJECT_DIR$/rpc-exception-core/rpc-exception-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rpc-exception-handler-spring-boot-start.iml" filepath="$PROJECT_DIR$/rpc-exception-handler-spring-boot-start.iml" />
       <module fileurl="file://$PROJECT_DIR$/rpc-exception-spi/rpc-exception-spi.iml" filepath="$PROJECT_DIR$/rpc-exception-spi/rpc-exception-spi.iml" />
       <module fileurl="file://$PROJECT_DIR$/rpc-exception-spring-boot-start/rpc-exception-spring-boot-start.iml" filepath="$PROJECT_DIR$/rpc-exception-spring-boot-start/rpc-exception-spring-boot-start.iml" />
     </modules>

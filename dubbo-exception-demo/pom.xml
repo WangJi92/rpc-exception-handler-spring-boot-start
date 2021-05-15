@@ -12,10 +12,11 @@
     <artifactId>dubbo-exception-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>dubbo-exception-demo</name>
+    <packaging>jar</packaging>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
-        <dubbo.version>2.7.10</dubbo.version>
+        <dubbo.version>2.7.1</dubbo.version>
     </properties>
     <dependencies>
         <dependency>
@@ -62,12 +63,19 @@
         </dependency>
         <dependency>
             <groupId>com.github.WangJi92</groupId>
-            <artifactId>dubbo-exception-filter-high</artifactId>
+            <artifactId>dubbo-exception-filter-low</artifactId>
             <scope>compile</scope>
         </dependency>
+        <!--        high does not work at all with dubbo 2.7.0-->
+        <!--                        <dependency>-->
+        <!--                            <groupId>com.github.WangJi92</groupId>-->
+        <!--                            <artifactId>dubbo-exception-filter-high</artifactId>-->
+        <!--                            <scope>compile</scope>-->
+        <!--                        </dependency>-->
     </dependencies>
 
     <build>
+        <finalName>dubbo-exception-demo</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

@@ -12,5 +12,9 @@ public interface RpcServiceConstant {
      * The name of the exception handler bean
      */
     String RPC_SERVICE_HANDLER_EXCEPTION_RESOLVER_BEAN_NAME = "rpcServiceHandlerExceptionResolver";
+    /**
+     * filter order
+     */
+    int DUBBO_PROVIDER_EXCEPTION_FILTER_ORDER = -1;
 
 }

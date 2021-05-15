@@ -6,12 +6,12 @@
     <groupId>com.github.WangJi92</groupId>
     <artifactId>rpc-ecpection-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>dubbo-exception-handler-spring-boot-start</name>
-    <description>dubbo-exception-handler-spring-boot-start</description>
+    <name>rpc-exception-handler-spring-boot-start</name>
+    <description>rpc-exception-handler-spring-boot-start</description>
     <packaging>pom</packaging>
     <modules>
         <module>dubbo-exception-filter</module>
-        <module>dubbo-exception-filter-2.7</module>
+        <module>dubbo-exception-filter-low</module>
         <module>rpc-exception-spi</module>
         <module>rpc-exception-spring-boot-start</module>
         <module>rpc-exception-core</module>
@@ -26,10 +26,11 @@
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <source>1.8</source>
         <target>1.8</target>
-        <rpc-exception-spi-version>1.0-SNAPSHOT</rpc-exception-spi-version>
-        <rpc-exception-spring-boot-start-version>1.0-SNAPSHOT</rpc-exception-spring-boot-start-version>
-        <rpc-exception-core-version>1.0-SNAPSHOT</rpc-exception-core-version>
-        <dubbo-exception-filter-high>1.0-SNAPSHOT</dubbo-exception-filter-high>
+        <rpc-exception-spi-version>${project.version}</rpc-exception-spi-version>
+        <rpc-exception-core-version>${project.version}</rpc-exception-core-version>
+        <dubbo-exception-filter-high-version>${project.version}</dubbo-exception-filter-high-version>
+        <dubbo-exception-filter-low-version>${project.version}</dubbo-exception-filter-low-version>
+        <rpc-exception-spring-boot-start-version>${project.version}</rpc-exception-spring-boot-start-version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -61,7 +62,13 @@
             <dependency>
                 <groupId>com.github.WangJi92</groupId>
                 <artifactId>dubbo-exception-filter-high</artifactId>
-                <version>${dubbo-exception-filter-high}</version>
+                <version>${dubbo-exception-filter-high-version}</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.github.WangJi92</groupId>
+                <artifactId>dubbo-exception-filter-low</artifactId>
+                <version>${dubbo-exception-filter-low-version}</version>
                 <scope>compile</scope>
             </dependency>
         </dependencies>

@@ -132,9 +132,9 @@ public class DefaultRpcServiceHandlerExceptionResolver implements RpcServiceHand
         }
         int handlerSize = this.exceptionHandlerAdviceCache.size();
         if (handlerSize == 0) {
-            log.debug("ControllerAdvice beans: none");
+            log.info("RpcServiceAdvice beans: none");
         } else {
-            log.debug("DubboAdvice beans:{} @DubboAdvice", handlerSize);
+            log.info("RpcServiceAdvice beans:{} @RpcServiceAdvice", handlerSize);
         }
     }
 

@@ -57,7 +57,7 @@ public class RpcServiceExceptionHandlerMethodResolver {
 
 
     /**
-     * Extract exception mappings from the {@code @ExceptionHandler} annotation first,
+     * Extract exception mappings from the {@code @RpcServiceExceptionHandler} annotation first,
      * and then as a fallback from the method signature itself.
      */
     @SuppressWarnings("unchecked")
@@ -65,6 +65,7 @@ public class RpcServiceExceptionHandlerMethodResolver {
         List<Class<? extends Throwable>> result = new ArrayList<>();
         detectAnnotationExceptionMappings(method, result);
         if (result.isEmpty()) {
+            //annotated value is empty find method Throwable.class
             for (Class<?> paramType : method.getParameterTypes()) {
                 if (Throwable.class.isAssignableFrom(paramType)) {
                     result.add((Class<? extends Throwable>) paramType);

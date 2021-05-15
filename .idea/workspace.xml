@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cec6b5a2-0f64-4fce-bb5d-11561cc9a35c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_hsf_LightApi_1_0_5.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_spring_spring_context_support_1_0_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_donhac_stonehenge_archetype_hsf_1_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_servlet_api_2_5.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_curator_curator_x_discovery_4_0_1.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_dubbo_dubbo_3_0_0_preview.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_jackson_jackson_core_asl_1_9_13.xml" afterDir="false" />
@@ -15,8 +12,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_WangJi92_dubbo_exception_filter_low_0_0_1_SNAPSHOT.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_WangJi92_rpc_exception_spring_boot_start_0_0_1_SNAPSHOT.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dubbo-exception-demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dubbo-exception-demo/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dubbo-exception-filter/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dubbo-exception-filter/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-exception-core/src/main/java/com/github/wangji92/rpc/annotation/RpcServiceExceptionHandlerMethodResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-exception-core/src/main/java/com/github/wangji92/rpc/annotation/RpcServiceExceptionHandlerMethodResolver.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -418,7 +414,21 @@
       <option name="project" value="LOCAL" />
       <updated>1621072962891</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="test dubbo  3.0.0.preview">
+      <created>1621074213395</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1621074213395</updated>
+    </task>
+    <task id="LOCAL-00034" summary="fix">
+      <created>1621074384260</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1621074384260</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -459,6 +469,7 @@
     <MESSAGE value="big change" />
     <MESSAGE value="fix not find bean name in filter" />
     <MESSAGE value="add low dubbo filter" />
+    <MESSAGE value="test dubbo  3.0.0.preview" />
     <MESSAGE value="fix" />
     <option name="LAST_COMMIT_MESSAGE" value="fix" />
   </component>
@@ -507,12 +518,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/dubbo-exception-filter/src/main/java/com/github/wangji92/rpc/dubbo/filter/DubboProviderExceptionFilter.java</url>
-          <line>55</line>
-          <option name="timeStamp" value="56" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/dubbo-exception-filter/src/main/java/com/github/wangji92/rpc/dubbo/filter/DubboProviderExceptionFilter.java</url>
-          <line>104</line>
+          <line>103</line>
           <option name="timeStamp" value="57" />
         </line-breakpoint>
       </breakpoints>

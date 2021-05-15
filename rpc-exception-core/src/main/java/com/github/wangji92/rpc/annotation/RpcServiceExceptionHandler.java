@@ -3,7 +3,7 @@ package com.github.wangji92.rpc.annotation;
 import java.lang.annotation.*;
 
 /**
- * 相同的含义 解决相同的问题 {@linkplain org.springframework.web.bind.annotation.ExceptionHandler}
+ * Exceptions that can be handled {@linkplain org.springframework.web.bind.annotation.ExceptionHandler}
  *
  * @author 汪小哥
  * @date 14-05-2021

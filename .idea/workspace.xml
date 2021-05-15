@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cec6b5a2-0f64-4fce-bb5d-11561cc9a35c" name="Default Changelist" comment="big change 目标">
-      <change afterPath="$PROJECT_DIR$/rpc-exception-spi/src/main/java/com/github/wangji92/rpc/constant/RpcServiceConstant.java" afterDir="false" />
+    <list default="true" id="cec6b5a2-0f64-4fce-bb5d-11561cc9a35c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dubbo-exception-filter/src/main/java/com/github/wangji92/rpc/dubbo/filter/DubboProviderExceptionFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/dubbo-exception-filter/src/main/java/com/github/wangji92/rpc/dubbo/filter/DubboProviderExceptionFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc-exception-core/src/main/java/com/github/wangji92/rpc/annotation/DefaultRpcServiceHandlerExceptionResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-exception-core/src/main/java/com/github/wangji92/rpc/annotation/DefaultRpcServiceHandlerExceptionResolver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-exception-spring-boot-start/src/main/java/com/github/wangji92/rpc/RpcServiceProviderExceptionFilterAutoConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-exception-spring-boot-start/src/main/java/com/github/wangji92/rpc/RpcServiceProviderExceptionFilterAutoConfig.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,8 +51,8 @@
   <component name="PropertiesComponent">
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
-    <property name="RequestMappingsPanelWidth0" value="75" />
-    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelWidth0" value="15" />
+    <property name="RequestMappingsPanelWidth1" value="15" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -275,7 +272,21 @@
       <option name="project" value="LOCAL" />
       <updated>1621061876256</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="fix not find bean name in filter">
+      <created>1621064608123</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1621064608123</updated>
+    </task>
+    <task id="LOCAL-00022" summary="fix">
+      <created>1621064784926</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1621064784926</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -304,7 +315,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="simple under dubbo" />
-    <MESSAGE value="fix" />
     <MESSAGE value="修改一下" />
     <MESSAGE value="修改两下子" />
     <MESSAGE value="修改提示" />
@@ -315,7 +325,9 @@
     <MESSAGE value="edit 4" />
     <MESSAGE value="big change 目标" />
     <MESSAGE value="big change" />
-    <option name="LAST_COMMIT_MESSAGE" value="big change" />
+    <MESSAGE value="fix not find bean name in filter" />
+    <MESSAGE value="fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -351,19 +363,14 @@
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/dubbo-exception-filter/src/main/java/com/github/wangji92/rpc/dubbo/filter/DubboProviderExceptionFilter.java</url>
-          <line>55</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/rpc-exception-spring-boot-start/src/main/java/com/github/wangji92/rpc/RpcServiceProviderExceptionFilterAutoConfig.java</url>
           <line>22</line>
           <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/rpc-exception-core/src/main/java/com/github/wangji92/rpc/annotation/DefaultRpcServiceHandlerExceptionResolver.java</url>
-          <line>104</line>
-          <option name="timeStamp" value="38" />
+          <line>106</line>
+          <option name="timeStamp" value="39" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 /**
- * 查询类中处理异常信息的类
+ * Classes for handling exception messages in query classes
  * copy from {@link org.springframework.web.method.annotation.ExceptionHandlerMethodResolver}
  *
  * @author 汪小哥

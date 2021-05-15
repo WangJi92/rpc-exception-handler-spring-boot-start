@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 构建全局处理 dubbo 异常 元数据 {@linkplain org.springframework.web.method.ControllerAdviceBean}
+ * Building global handling rpc  exception metadata {@linkplain org.springframework.web.method.ControllerAdviceBean}
  * {@linkplain }
  *
  * @author 汪小哥

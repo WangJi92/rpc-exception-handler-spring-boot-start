@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * {@literal ExceptionHandlerExceptionResolver}
+ * rpc service  exception processors {@literal ExceptionHandlerExceptionResolver}
  *
  * @author 汪小哥
  * @date 11-05-2021
@@ -94,7 +94,7 @@ public class DefaultRpcServiceHandlerExceptionResolver implements RpcServiceHand
 
                 for (Object providerArg : providerArgs) {
                     if (ClassUtils.isAssignable(parameterTypes[index], providerArg.getClass())) {
-                        args[index] = throwable;
+                        args[index] = providerArg;
                         break;
                     }
                 }
@@ -116,7 +116,7 @@ public class DefaultRpcServiceHandlerExceptionResolver implements RpcServiceHand
     }
 
     /**
-     * 初始化全局缓存
+     * Initialising the global cache
      */
     private void initExceptionHandlerAdviceCache() {
         List<RpcServiceAdviceBean> annotatedBeans = RpcServiceAdviceBean.findAnnotatedBeans(applicationContext);

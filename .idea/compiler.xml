@@ -6,7 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="dubbo-exception-filter-2.7" />
+        <module name="dubbo-exception-filter-low" />
         <module name="dubbo-exception-filter" />
         <module name="rpc-exception-spi" />
         <module name="rpc-exception-core" />
@@ -17,7 +17,7 @@
     <bytecodeTargetLevel>
       <module name="dubbo-exception-demo" target="1.8" />
       <module name="dubbo-exception-filter" target="1.8" />
-      <module name="dubbo-exception-filter-2.7" target="1.5" />
+      <module name="dubbo-exception-filter-low" target="1.5" />
       <module name="dubbo-exception-handler-spring-boot-start" target="1.8" />
       <module name="rpc-exception-core" target="1.8" />
       <module name="rpc-exception-spi" target="1.8" />

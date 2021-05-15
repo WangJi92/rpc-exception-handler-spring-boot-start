@@ -79,14 +79,14 @@ public class RpcServiceExceptionHandlerMethodResolver {
 
     private void detectAnnotationExceptionMappings(Method method, List<Class<? extends Throwable>> result) {
         RpcServiceExceptionHandler ann = AnnotatedElementUtils.findMergedAnnotation(method, RpcServiceExceptionHandler.class);
-        Assert.state(ann != null, "No DubboExceptionHandler annotation");
+        Assert.state(ann != null, "No RpcServiceExceptionHandler annotation");
         result.addAll(Arrays.asList(ann.value()));
     }
 
     private void addExceptionMapping(Class<? extends Throwable> exceptionType, Method method) {
         Method oldMethod = this.mappedMethods.put(exceptionType, method);
         if (oldMethod != null && !oldMethod.equals(method)) {
-            throw new IllegalStateException("Ambiguous @DubboExceptionHandler method mapped for [" +
+            throw new IllegalStateException("Ambiguous @RpcServiceExceptionHandler method mapped for [" +
                     exceptionType + "]: {" + oldMethod + ", " + method + "}");
         }
     }

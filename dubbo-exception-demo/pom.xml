@@ -3,10 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.4.5</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <groupId>com.github.WangJi92</groupId>
+        <artifactId>rpc-ecpection-parent</artifactId>
+        <relativePath>../pom.xml</relativePath>
+        <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>com.github.wangji92</groupId>
     <artifactId>dubbo-exception-demo</artifactId>
@@ -45,11 +45,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.WangJi92</groupId>
-            <artifactId>dubbo-exception-handler-spring-boot-start</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo</artifactId>
             <version>${dubbo.version}</version>
@@ -59,6 +54,16 @@
             <artifactId>dubbo-dependencies-zookeeper</artifactId>
             <version>${dubbo.version}</version>
             <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>com.github.WangJi92</groupId>
+            <artifactId>rpc-exception-spring-boot-start</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.WangJi92</groupId>
+            <artifactId>dubbo-exception-filter-high</artifactId>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

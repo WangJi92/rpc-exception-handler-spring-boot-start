@@ -1,7 +1,7 @@
 package com.github.wangji92.dubbodemo.provider;
 
-import com.github.wangji92.dubbo.annotation.DubboAdvice;
-import com.github.wangji92.dubbo.annotation.DubboExceptionHandler;
+import com.github.wangji92.rpc.annotation.RpcServiceAdvice;
+import com.github.wangji92.rpc.annotation.RpcServiceExceptionHandler;
 import org.apache.dubbo.rpc.Invocation;
 import org.apache.dubbo.rpc.Invoker;
 import org.springframework.stereotype.Component;
@@ -15,7 +15,7 @@ import java.util.Random;
  * @date 13-05-2021
  */
 @Component
-@DubboAdvice
+@RpcServiceAdvice
 public class AsyncServiceImpl implements AsyncService, Serializable {
     @Override
     public String sayHello(String name) {
@@ -40,7 +40,7 @@ public class AsyncServiceImpl implements AsyncService, Serializable {
         return "timed value";
     }
 
-    @DubboExceptionHandler(value = RuntimeException.class)
+    @RpcServiceExceptionHandler(value = RuntimeException.class)
     public AsyncServiceImpl handlerEx(Method handlerMethod, Invoker<?> invoker, Invocation invocation, Exception ex) {
         System.out.println("handler");
         return new AsyncServiceImpl();

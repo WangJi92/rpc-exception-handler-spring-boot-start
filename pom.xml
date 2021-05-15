@@ -4,14 +4,32 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.WangJi92</groupId>
-    <artifactId>dubbo-exception-handler-spring-boot-start</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>rpc-ecpection-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <name>dubbo-exception-handler-spring-boot-start</name>
     <description>dubbo-exception-handler-spring-boot-start</description>
+    <packaging>pom</packaging>
+    <modules>
+        <module>dubbo-exception-filter</module>
+        <module>dubbo-exception-filter-2.7</module>
+        <module>rpc-exception-spi</module>
+        <module>rpc-exception-spring-boot-start</module>
+        <module>rpc-exception-core</module>
+        <module>dubbo-exception-demo</module>
+    </modules>
     <properties>
         <java.version>1.8</java.version>
         <dubbo.version>2.7.10</dubbo.version>
         <spring-boot.version>2.4.5</spring-boot.version>
+        <rpc-ecpection-parent-version>0.0.1-SNAPSHOT</rpc-ecpection-parent-version>
+        <maven-plugin.version>3.6.0</maven-plugin.version>
+        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <source>1.8</source>
+        <target>1.8</target>
+        <rpc-exception-spi-version>1.0-SNAPSHOT</rpc-exception-spi-version>
+        <rpc-exception-spring-boot-start-version>1.0-SNAPSHOT</rpc-exception-spring-boot-start-version>
+        <rpc-exception-core-version>1.0-SNAPSHOT</rpc-exception-core-version>
+        <dubbo-exception-filter-high>1.0-SNAPSHOT</dubbo-exception-filter-high>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -22,54 +40,34 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>com.github.WangJi92</groupId>
+                <artifactId>rpc-exception-spi</artifactId>
+                <version>${rpc-exception-spi-version}</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.github.WangJi92</groupId>
+                <artifactId>rpc-exception-spring-boot-start</artifactId>
+                <version>${rpc-exception-spring-boot-start-version}</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.github.WangJi92</groupId>
+                <artifactId>rpc-exception-core</artifactId>
+                <version>${rpc-exception-core-version}</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.github.WangJi92</groupId>
+                <artifactId>dubbo-exception-filter-high</artifactId>
+                <version>${dubbo-exception-filter-high}</version>
+                <scope>compile</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>
 
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>5.3.6</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo</artifactId>
-            <version>${dubbo.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.30</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
     </dependencies>
 
     <build>
@@ -79,11 +77,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <encoding>UTF-8</encoding>
-                    <verbose>true</verbose>
-                    <showWarnings>true</showWarnings>
+                    <source>${source}</source>
+                    <target>${target}</target>
                 </configuration>
             </plugin>
             <!-- Source -->
@@ -101,32 +96,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- Gpg Signature -->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-gpg-plugin</artifactId>-->
-<!--                <version>1.6</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>oss</id>-->
-<!--                        <phase>verify</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>sign</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
-<!--            <plugin>-->
-<!--                <groupId>org.sonatype.plugins</groupId>-->
-<!--                <artifactId>nexus-staging-maven-plugin</artifactId>-->
-<!--                <version>1.6.8</version>-->
-<!--                <extensions>true</extensions>-->
-<!--                <configuration>-->
-<!--                    <serverId>oss</serverId>-->
-<!--                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>-->
-<!--                    <autoReleaseAfterClose>true</autoReleaseAfterClose>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
         </plugins>
     </build>
 

@@ -5,28 +5,27 @@
 
     <groupId>com.github.WangJi92</groupId>
     <artifactId>rpc-ecpection-parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>${revision}</version>
     <name>rpc-exception-handler-spring-boot-start</name>
     <description>rpc-exception-handler-spring-boot-start</description>
     <packaging>pom</packaging>
     <modules>
-        <module>dubbo-exception-filter</module>
-        <module>dubbo-exception-filter-low</module>
         <module>rpc-exception-spi</module>
-        <module>rpc-exception-spring-boot-start</module>
+        <module>dubbo-exception-filter-high</module>
+        <module>dubbo-exception-filter-low</module>
         <module>rpc-exception-core</module>
+        <module>rpc-exception-spring-boot-start</module>
         <module>dubbo-exception-demo</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
         <dubbo.version>2.7.10</dubbo.version>
         <spring-boot.version>2.4.5</spring-boot.version>
-        <rpc-ecpection-parent-version>0.0.1-SNAPSHOT</rpc-ecpection-parent-version>
         <maven-plugin.version>3.6.0</maven-plugin.version>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <source>1.8</source>
         <target>1.8</target>
-        <rpc-exception-version>1.0-SNAPSHOT</rpc-exception-version>
+        <revision>1.0.1-SNAPSHOT</revision>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -40,31 +39,31 @@
             <dependency>
                 <groupId>com.github.WangJi92</groupId>
                 <artifactId>rpc-exception-spi</artifactId>
-                <version>${rpc-exception-version}</version>
+                <version>${revision}</version>
                 <scope>compile</scope>
             </dependency>
             <dependency>
                 <groupId>com.github.WangJi92</groupId>
                 <artifactId>rpc-exception-spring-boot-start</artifactId>
-                <version>${rpc-exception-version}</version>
+                <version>${revision}</version>
                 <scope>compile</scope>
             </dependency>
             <dependency>
                 <groupId>com.github.WangJi92</groupId>
                 <artifactId>rpc-exception-core</artifactId>
-                <version>${rpc-exception-version}</version>
+                <version>${revision}</version>
                 <scope>compile</scope>
             </dependency>
             <dependency>
                 <groupId>com.github.WangJi92</groupId>
                 <artifactId>dubbo-exception-filter-high</artifactId>
-                <version>${rpc-exception-version}</version>
+                <version>${revision}</version>
                 <scope>compile</scope>
             </dependency>
             <dependency>
                 <groupId>com.github.WangJi92</groupId>
                 <artifactId>dubbo-exception-filter-low</artifactId>
-                <version>${rpc-exception-version}</version>
+                <version>${revision}</version>
                 <scope>compile</scope>
             </dependency>
         </dependencies>
@@ -74,31 +73,94 @@
     </dependencies>
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>flatten-maven-plugin</artifactId>
+                    <version>1.1.0</version>
+                    <configuration>
+                        <updatePomFile>true</updatePomFile>
+                        <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>flatten</id>
+                            <phase>process-resources</phase>
+                            <goals>
+                                <goal>flatten</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>flatten.clean</id>
+                            <phase>clean</phase>
+                            <goals>
+                                <goal>clean</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.1</version>
+                    <configuration>
+                        <source>${source}</source>
+                        <target>${target}</target>
+                    </configuration>
+                </plugin>
+                <!-- Source -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>3.0.1</version>
+                    <executions>
+                        <execution>
+                            <id>oss</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>jar-no-fork</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.0.1</version>
+                    <configuration>
+                        <failOnError>false</failOnError>
+                        <doclint>none</doclint>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
-                <configuration>
-                    <source>${source}</source>
-                    <target>${target}</target>
-                </configuration>
             </plugin>
-            <!-- Source -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.0.1</version>
-                <executions>
-                    <execution>
-                        <id>oss</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+
         </plugins>
     </build>
 

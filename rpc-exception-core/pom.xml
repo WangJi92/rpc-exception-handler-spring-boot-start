@@ -7,11 +7,10 @@
         <groupId>com.github.WangJi92</groupId>
         <artifactId>rpc-ecpection-parent</artifactId>
         <relativePath>../pom.xml</relativePath>
-        <version>1.0-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>rpc-exception-core</artifactId>
-    <version>1.0-SNAPSHOT</version>
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>

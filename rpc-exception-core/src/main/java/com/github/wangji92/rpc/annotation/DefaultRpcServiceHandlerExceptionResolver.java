@@ -107,6 +107,7 @@ public class DefaultRpcServiceHandlerExceptionResolver implements RpcServiceHand
             ReflectionUtils.makeAccessible(method);
             return ReflectionUtils.invokeMethod(method, methodTarget, args);
         } catch (Exception e) {
+            log.debug("do invoke error handler method ", e);
             throw e;
         }
     }

@@ -43,7 +43,9 @@ public class DubboProviderExceptionFilter implements Filter, Filter.Listener {
 
     @Override
     public void onResponse(Result appResponse, Invoker<?> invoker, Invocation invocation) {
-        this.handlerError(invoker, invocation, appResponse);
+        if (appResponse.hasException()) {
+            this.handlerError(invoker, invocation, appResponse);
+        }
     }
 
     @Override

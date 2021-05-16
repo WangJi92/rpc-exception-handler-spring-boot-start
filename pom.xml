@@ -29,7 +29,7 @@
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <source>1.8</source>
         <target>1.8</target>
-        <revision>1.0.0-SNAPSHOT</revision>
+        <revision>1.0.0</revision>
     </properties>
     <licenses>
         <license>

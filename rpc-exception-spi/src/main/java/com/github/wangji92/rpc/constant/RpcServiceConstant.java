@@ -13,8 +13,8 @@ public interface RpcServiceConstant {
      */
     String RPC_SERVICE_HANDLER_EXCEPTION_RESOLVER_BEAN_NAME = "rpcServiceHandlerExceptionResolver";
     /**
-     * filter order
+     * filter order before org.apache.dubbo.rpc.filter.ExceptionFilter
      */
-    int DUBBO_PROVIDER_EXCEPTION_FILTER_ORDER = -1;
+    int DUBBO_PROVIDER_EXCEPTION_FILTER_ORDER = 1;
 
 }

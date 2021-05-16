@@ -1,5 +1,6 @@
 package com.github.wangji92.rpc.annotation;
 
+import com.github.wangji92.rpc.constant.VirtualObject;
 import com.github.wangji92.rpc.spi.RpcServiceHandlerExceptionResolver;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.aop.framework.AopProxyUtils;
@@ -37,7 +38,7 @@ public class DefaultRpcServiceHandlerExceptionResolver implements RpcServiceHand
 
     @Override
     public Object resolveException(Method rpcServiceMethod, Throwable throwable, Object rpcServiceTarget, Object[] args) throws Throwable {
-        if (rpcServiceTarget != null) {
+        if (rpcServiceTarget != null && !(rpcServiceTarget instanceof VirtualObject)) {
             Class<?> handlerType = AopProxyUtils.ultimateTargetClass(rpcServiceTarget);
             RpcServiceExceptionHandlerMethodResolver resolver = this.exceptionHandlerCache.get(handlerType);
             if (resolver == null) {

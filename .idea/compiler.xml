@@ -8,10 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="dubbo-exception-filter-low" />
         <module name="dubbo-exception-filter-high" />
+        <module name="rpc-exception-samples-common" />
+        <module name="rpc-exception-samples-dubbo-consumer" />
         <module name="rpc-exception-spi" />
+        <module name="rpc-exception-samples-dubbo-high-provider" />
         <module name="rpc-exception-core" />
-        <module name="dubbo-exception-demo" />
         <module name="rpc-exception-spring-boot-start" />
+        <module name="rpc-exception-samples-spi" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -21,7 +24,15 @@
       <module name="dubbo-exception-filter-low" target="1.8" />
       <module name="rpc-ecpection-parent" target="1.8" />
       <module name="rpc-exception-core" target="1.8" />
+      <module name="rpc-exception-dubbo-samples" target="1.5" />
       <module name="rpc-exception-handler-spring-boot-start" target="1.8" />
+      <module name="rpc-exception-sample-spi" target="1.8" />
+      <module name="rpc-exception-samples" target="1.8" />
+      <module name="rpc-exception-samples-common" target="1.8" />
+      <module name="rpc-exception-samples-dubbo-consumer" target="1.8" />
+      <module name="rpc-exception-samples-dubbo-high-provider" target="1.8" />
+      <module name="rpc-exception-samples-dubbo-provider-low" target="1.5" />
+      <module name="rpc-exception-samples-spi" target="1.8" />
       <module name="rpc-exception-spi" target="1.8" />
       <module name="rpc-exception-spring-boot-start" target="1.8" />
     </bytecodeTargetLevel>

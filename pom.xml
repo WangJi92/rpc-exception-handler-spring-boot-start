@@ -19,7 +19,7 @@
         <module>dubbo-exception-filter-low</module>
         <module>rpc-exception-core</module>
         <module>rpc-exception-spring-boot-start</module>
-        <module>dubbo-exception-demo</module>
+        <module>rpc-exception-samples</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
@@ -29,7 +29,7 @@
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <source>1.8</source>
         <target>1.8</target>
-        <revision>1.0.1</revision>
+        <revision>1.0.2-SNAPSHOT</revision>
     </properties>
     <licenses>
         <license>

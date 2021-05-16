@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cec6b5a2-0f64-4fce-bb5d-11561cc9a35c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/rpc-exception-spi/src/main/java/com/github/wangji92/rpc/constant/VitrualObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dubbo-exception-filter-high/src/main/java/com/github/wangji92/rpc/dubbo/filter/DubboProviderExceptionFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/dubbo-exception-filter-high/src/main/java/com/github/wangji92/rpc/dubbo/filter/DubboProviderExceptionFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dubbo-exception-filter-low/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dubbo-exception-filter-low/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dubbo-exception-filter-low/src/main/java/com/github/wangji92/rpc/dubbo/filter/DubboProviderExceptionLowFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/dubbo-exception-filter-low/src/main/java/com/github/wangji92/rpc/dubbo/filter/DubboProviderExceptionLowFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-exception-core/src/main/java/com/github/wangji92/rpc/annotation/DefaultRpcServiceHandlerExceptionResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-exception-core/src/main/java/com/github/wangji92/rpc/annotation/DefaultRpcServiceHandlerExceptionResolver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-exception-spring-boot-start/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-exception-spring-boot-start/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-exception-samples/rpc-exception-samples-dubbo-consumer/src/main/java/com/github/wangji92/sample/consumer/bootstrap/GenericCallConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-exception-samples/rpc-exception-samples-dubbo-consumer/src/main/java/com/github/wangji92/sample/consumer/bootstrap/GenericCallConsumer.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,8 +27,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="AnnotationType" />
-        <option value="package-info" />
         <option value="Interface" />
+        <option value="package-info" />
         <option value="Class" />
       </list>
     </option>
@@ -46,6 +39,11 @@
         <option name="argument" value="--tags" />
         <option name="title" value="All" />
       </GitPushTagMode>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -70,25 +68,29 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/dubbo-exception-filter-low/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/rpc-exception-samples/rpc-exception-samples-dubbo-consumer/src/main/resources" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.29807693" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateBuilderDialog.RecentsKey">
-      <recent name="com.github.wangji92.dubbo.annotation" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/dubbo-exception-filter-low/src/main/resources" />
-      <recent name="$PROJECT_DIR$/dubbo-exception-filter-low/src/main/java" />
-      <recent name="$PROJECT_DIR$/rpc-exception-spring-boot-start/src/main/resources" />
-      <recent name="$PROJECT_DIR$/rpc-exception-spring-boot-start" />
-      <recent name="$PROJECT_DIR$/rpc-exception-spi" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.github.wangji92.dubbodemo" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/dubbo-exception-filter-low/src/main/resources/META-INF" />
       <recent name="$PROJECT_DIR$/src/main/resources/META-INF" />
+    </key>
+    <key name="CreateBuilderDialog.RecentsKey">
+      <recent name="com.github.wangji92.dubbo.annotation" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.github.wangji92.sample.provider.exception" />
+      <recent name="com.github.wangji92.dubbodemo" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/rpc-exception-samples/rpc-exception-samples-dubbo-consumer/src/main/resources" />
+      <recent name="$PROJECT_DIR$/rpc-exception-samples/rpc-exception-samples-dubbo-high-provider/src/main/resources" />
+      <recent name="$PROJECT_DIR$/dubbo-exception-filter-low/src/main/resources" />
+      <recent name="$PROJECT_DIR$/dubbo-exception-filter-low/src/main/java" />
+      <recent name="$PROJECT_DIR$/rpc-exception-spring-boot-start/src/main/resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -103,13 +105,26 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.AsyncConsumer">
+  <component name="RunManager" selected="Application.GenericCallConsumer">
     <configuration name="AsyncConsumer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.github.wangji92.dubbodemo.AsyncConsumer" />
       <module name="dubbo-exception-demo" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.github.wangji92.dubbodemo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GenericCallConsumer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.github.wangji92.sample.consumer.bootstrap.GenericCallConsumer" />
+      <module name="rpc-exception-samples-dubbo-consumer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.github.wangji92.sample.consumer.bootstrap.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -164,6 +179,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DubboAutoConfigurationConsumerBootstrap" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="rpc-exception-samples-dubbo-consumer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.github.wangji92.sample.consumer.bootstrap.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.github.wangji92.sample.consumer.bootstrap.DubboAutoConfigurationConsumerBootstrap" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DubboAutoConfigurationProviderBootstrap" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="rpc-exception-samples-dubbo-high-provider" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.github.wangji92.sample.provider.bootstrap.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.github.wangji92.sample.provider.bootstrap.DubboAutoConfigurationProviderBootstrap" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DubboExceptionDemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="dubbo-exception-demo" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.github.wangji92.dubbodemo.DubboExceptionDemoApplication" />
@@ -174,9 +215,15 @@
     <list>
       <item itemvalue="Application.AsyncConsumer" />
       <item itemvalue="Spring Boot.DubboExceptionDemoApplication" />
+      <item itemvalue="Spring Boot.DubboAutoConfigurationProviderBootstrap" />
+      <item itemvalue="Spring Boot.DubboAutoConfigurationConsumerBootstrap" />
+      <item itemvalue="Application.GenericCallConsumer" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.GenericCallConsumer" />
+        <item itemvalue="Spring Boot.DubboAutoConfigurationProviderBootstrap" />
+        <item itemvalue="Spring Boot.DubboAutoConfigurationConsumerBootstrap" />
         <item itemvalue="Application.AsyncConsumer" />
       </list>
     </recent_temporary>
@@ -192,7 +239,7 @@
       <option name="presentableId" value="Default" />
       <updated>1620742409204</updated>
       <workItem from="1620742413013" duration="49152000" />
-      <workItem from="1621140135300" duration="6378000" />
+      <workItem from="1621140135300" duration="20799000" />
     </task>
     <task id="LOCAL-00001" summary="simple under dubbo">
       <created>1620780082391</created>
@@ -474,7 +521,56 @@
       <option name="project" value="LOCAL" />
       <updated>1621151485876</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Add null service target of virtual object cache">
+      <created>1621152711480</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1621152711480</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Add null service target of virtual object cache">
+      <created>1621153121484</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1621153121484</updated>
+    </task>
+    <task id="LOCAL-00043" summary="fix filter order before org.apache.dubbo.rpc.filter.ExceptionFilter">
+      <created>1621179908220</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1621179908220</updated>
+    </task>
+    <task id="LOCAL-00044" summary="fix null exception">
+      <created>1621179971760</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1621179971760</updated>
+    </task>
+    <task id="LOCAL-00045" summary="add debug log">
+      <created>1621179997102</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1621179997102</updated>
+    </task>
+    <task id="LOCAL-00046" summary="add demo">
+      <created>1621180119112</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1621180119112</updated>
+    </task>
+    <task id="LOCAL-00047" summary="add demo">
+      <created>1621181857642</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1621181857642</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -523,7 +619,12 @@
     <MESSAGE value="maven 版本管理 flatten-maven-plugin" />
     <MESSAGE value="add deploy config" />
     <MESSAGE value="Release of the first available version" />
-    <option name="LAST_COMMIT_MESSAGE" value="Release of the first available version" />
+    <MESSAGE value="Add null service target of virtual object cache" />
+    <MESSAGE value="fix filter order before org.apache.dubbo.rpc.filter.ExceptionFilter" />
+    <MESSAGE value="fix null exception" />
+    <MESSAGE value="add debug log" />
+    <MESSAGE value="add demo" />
+    <option name="LAST_COMMIT_MESSAGE" value="add demo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -542,11 +643,6 @@
           <url>jar://$MAVEN_REPOSITORY$/org/apache/dubbo/dubbo/2.7.10/dubbo-2.7.10-sources.jar!/org/apache/dubbo/rpc/protocol/FilterNode.java</url>
           <line>85</line>
           <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/apache/dubbo/dubbo/2.7.10/dubbo-2.7.10-sources.jar!/org/apache/dubbo/rpc/protocol/FilterNode.java</url>
-          <line>76</line>
-          <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/dubbo-exception-filter-low/src/main/java/com/github/wangji92/rpc/dubbo/filter/DubboProviderExceptionLowFilter.java</url>
@@ -569,9 +665,34 @@
           <option name="timeStamp" value="57" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/dubbo-exception-filter-high/src/main/java/com/github/wangji92/rpc/dubbo/filter/DubboProviderExceptionFilter.java</url>
-          <line>54</line>
-          <option name="timeStamp" value="58" />
+          <url>file://$PROJECT_DIR$/dubbo-exception-filter-low/src/main/java/com/github/wangji92/rpc/dubbo/filter/DubboProviderExceptionLowFilter.java</url>
+          <line>71</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/rpc-exception-core/src/main/java/com/github/wangji92/rpc/annotation/DefaultRpcServiceHandlerExceptionResolver.java</url>
+          <line>63</line>
+          <option name="timeStamp" value="62" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/apache/dubbo/dubbo/2.7.1/dubbo-2.7.1-sources.jar!/org/apache/dubbo/rpc/filter/ExceptionFilter.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/dubbo-exception-filter-low/src/main/java/com/github/wangji92/rpc/dubbo/filter/DubboProviderExceptionLowFilter.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/rpc-exception-samples/rpc-exception-samples-dubbo-high-provider/src/main/java/com/github/wangji92/sample/provider/exception/DubboGlobalExceptionAdvice.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/rpc-exception-samples/rpc-exception-samples-dubbo-high-provider/src/main/java/com/github/wangji92/sample/provider/exception/DubboGlobalExceptionAdvice.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="78" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

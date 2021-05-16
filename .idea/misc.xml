@@ -14,18 +14,27 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/dubbo-exception-demo/pom.xml" />
         <option value="$PROJECT_DIR$/rpc-exception-spi/pom.xml" />
         <option value="$PROJECT_DIR$/dubbo-exception-filter-2.7/pom.xml" />
         <option value="$PROJECT_DIR$/dubbo-exception-filter/pom.xml" />
         <option value="$PROJECT_DIR$/rpc-exception-spring-boot-start/pom.xml" />
         <option value="$PROJECT_DIR$/rpc-expection-core/pom.xml" />
         <option value="$PROJECT_DIR$/rpc-exception-core/pom.xml" />
+        <option value="$PROJECT_DIR$/rpc-exception-dubbo-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/rpc-exception-dubbo-samples/rpc-exception-sample-spi/pom.xml" />
+        <option value="$PROJECT_DIR$/rpc-exception-samples/rpc-exception-samples-common/pom.xml" />
+        <option value="$PROJECT_DIR$/rpc-exception-samples/pom.xml" />
+        <option value="$PROJECT_DIR$/rpc-exception-samples/rpc-exception-sample-spi/pom.xml" />
+        <option value="$PROJECT_DIR$/rpc-exception-samples/rpc-exception-samples-dubbo-comsumer/pom.xml" />
+        <option value="$PROJECT_DIR$/rpc-exception-samples/rpc-exception-samples-dubbo-high-provider/pom.xml" />
+        <option value="$PROJECT_DIR$/rpc-exception-samples/rpc-exception-samples-provider-low/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/rpc-eception-core/pom.xml" />
+        <option value="$PROJECT_DIR$/rpc-exception-dubbo-samples/pom.xml" />
+        <option value="$PROJECT_DIR$/rpc-exception-samples/rpc-exception-samples-dubbo-provider-low/pom.xml" />
       </set>
     </option>
   </component>

@@ -7,7 +7,11 @@
     <artifactId>rpc-ecpection-parent</artifactId>
     <version>${revision}</version>
     <name>rpc-exception-handler-spring-boot-start</name>
-    <description>rpc-exception-handler-spring-boot-start</description>
+    <!--suppress UnresolvedMavenProperty -->
+    <description>Rpc Exception Handling Reference spring mvc Exception Handling @RpcServiceAdvice == @ControllerAdvice
+        @RpcServiceExceptionHandler == @ExceptionHandler is much easier to use
+    </description>
+    <url>https://github.com/WangJi92/rpc-exception-handler-spring-boot-start</url>
     <packaging>pom</packaging>
     <modules>
         <module>rpc-exception-spi</module>
@@ -25,8 +29,29 @@
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <source>1.8</source>
         <target>1.8</target>
-        <revision>1.0.1-SNAPSHOT</revision>
+        <revision>1.0.0-SNAPSHOT</revision>
     </properties>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/WangJi92/rpc-exception-handler-spring-boot-start</url>
+        <connection>https://github.com/WangJi92/rpc-exception-handler-spring-boot-start.git</connection>
+        <developerConnection>https://github.com/WangJi92/rpc-exception-handler-spring-boot-start.git
+        </developerConnection>
+    </scm>
+    <developers>
+        <developer>
+            <name>wangji</name>
+            <email>983433479@qq.com</email>
+            <url>https://github.com/WangJi92/rpc-exception-handler-spring-boot-start</url>
+        </developer>
+    </developers>
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -163,5 +188,67 @@
 
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>oss</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+                </snapshotRepository>
+                <repository>
+                    <id>oss</id>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>flatten-maven-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                    </plugin>
+                    <!-- Gpg Signature -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <id>oss</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.8</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>oss</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>

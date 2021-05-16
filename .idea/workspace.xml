@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cec6b5a2-0f64-4fce-bb5d-11561cc9a35c" name="Default Changelist" comment="maven 版本管理 flatten-maven-plugin">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="cec6b5a2-0f64-4fce-bb5d-11561cc9a35c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
@@ -181,7 +180,7 @@
       <option name="presentableId" value="Default" />
       <updated>1620742409204</updated>
       <workItem from="1620742413013" duration="49152000" />
-      <workItem from="1621140135300" duration="4021000" />
+      <workItem from="1621140135300" duration="4860000" />
     </task>
     <task id="LOCAL-00001" summary="simple under dubbo">
       <created>1620780082391</created>
@@ -442,7 +441,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621149730517</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="maven 版本管理 flatten-maven-plugin">
+      <created>1621150009545</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1621150009545</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

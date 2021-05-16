@@ -1,6 +1,7 @@
 package com.github.wangji92.rpc.dubbo.filter;
 
 import com.github.wangji92.rpc.constant.RpcServiceConstant;
+import com.github.wangji92.rpc.constant.VirtualObject;
 import com.github.wangji92.rpc.dubbo.utils.ProviderInvokerTargetUtils;
 import com.github.wangji92.rpc.spi.RpcServiceHandlerExceptionResolver;
 import lombok.extern.slf4j.Slf4j;
@@ -28,7 +29,7 @@ public class DubboProviderExceptionLowFilter implements Filter {
     /**
      * Can't find ，cache a fake one
      */
-    public Object virtualServiceTarget = new Object();
+    public Object virtualServiceTarget = new VirtualObject();
 
     /**
      * this field name equals to RpcServiceHandlerExceptionResolver bean name {@linkplain org.apache.dubbo.config.spring.extension.SpringExtensionFactory#getExtension(Class, String) }
